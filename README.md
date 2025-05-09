@@ -1,7 +1,3 @@
-Aqui está um **README ajustado** para o trabalho, com uma estrutura mais organizada e clara:
-
----
-
 # Trabalho Individual - Análise de Conjunto de Dados Educacionais
 
 ## Objetivo
