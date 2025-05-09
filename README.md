@@ -71,10 +71,13 @@ A avaliação será baseada na execução correta dos seguintes procedimentos:
 Aqui está o passo a passo para configurar o ambiente de desenvolvimento com as bibliotecas necessárias, incluindo a criação do **venv** (ambiente virtual) e a instalação das dependências a partir do **requirements.txt**:
 
 ---
+Aqui está o passo a passo completo, agora incluindo o comando para executar o Flask (`app.py`) após ativar o ambiente virtual e acessar o diretório `analise_proj`.
 
-### Passo a Passo para Configuração do Ambiente
+---
 
-#### 1. Criar o Ambiente Virtual (`venv`)
+### Passo a Passo Completo para Configuração do Ambiente e Execução do Flask
+
+#### 1. **Criar o Ambiente Virtual (`venv`)**
 
 ##### Para Windows:
 
@@ -96,7 +99,7 @@ Aqui está o passo a passo para configurar o ambiente de desenvolvimento com as 
    python3 -m venv venv
    ```
 
-#### 2. Instalar as Dependências a partir do `requirements.txt`
+#### 2. **Instalar as Dependências a partir do `requirements.txt`**
 
 1. **Ative o ambiente virtual**:
 
@@ -112,63 +115,86 @@ Aqui está o passo a passo para configurar o ambiente de desenvolvimento com as 
    source venv/bin/activate
    ```
 
-2. Com o ambiente virtual ativado, execute o seguinte comando para instalar as dependências listadas no `requirements.txt`:
+2. Com o ambiente virtual ativado, instale as dependências com o seguinte comando:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-   Isso instalará todas as bibliotecas necessárias, incluindo `Flask`, `pandas`, `matplotlib`, `seaborn` e `openpyxl`.
+#### 3. **Entrar no Diretório do Projeto**
 
-#### 3. Entrar no Ambiente Virtual
+1. Depois de ativar o ambiente virtual, **acessa o diretório do projeto** onde está o seu arquivo `app.py`.
 
-##### Para Windows:
-
-1. Após criar o ambiente virtual, você precisa **ativá-lo** usando o comando:
+   * No seu caso, o diretório é `analise_proj`, então faça isso:
 
    ```bash
-   .\venv\Scripts\activate
+   cd analise_proj
    ```
 
-##### Para macOS/Linux:
+#### 4. **Executar o Aplicativo Flask**
 
-1. Após criar o ambiente virtual, você precisa **ativá-lo** usando o comando:
+1. Agora, você pode **executar o aplicativo Flask**. No diretório `analise_proj`, execute o seguinte comando:
 
    ```bash
-   source venv/bin/activate
+   python app.py
    ```
 
-   Isso fará com que o ambiente virtual seja ativado e você veja o prefixo `(venv)` no terminal, indicando que o ambiente virtual está ativo.
+2. O Flask irá iniciar o servidor de desenvolvimento e você verá uma saída como esta no terminal:
 
-#### 4. Desativar o Ambiente Virtual (Quando Terminar)
+   ```
+   * Serving Flask app 'app'
+   * Debug mode: on
+   WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+   * Running on http://127.0.0.1:5000
+   Press CTRL+C to quit
+   * Restarting with stat
+   * Debugger is active!
+   * Debugger PIN: 463-049-529
+   ```
 
-Quando terminar de trabalhar, você pode **desativar o ambiente virtual** com o seguinte comando:
+3. **Acesse o aplicativo** no navegador:
 
-```bash
-deactivate
-```
+   * Abra o navegador e vá até **[http://127.0.0.1:5000](http://127.0.0.1:5000)** para visualizar o aplicativo rodando localmente.
 
----
+#### 5. **Desativar o Ambiente Virtual**
 
-### Arquivo `requirements.txt`
+1. Quando terminar de trabalhar, você pode **desativar o ambiente virtual** com o comando:
 
-Se você ainda não tiver o arquivo `requirements.txt`, você pode gerá-lo com o seguinte comando (caso tenha as bibliotecas instaladas no ambiente):
-
-```bash
-pip freeze > requirements.txt
-```
-
-Isso criará o arquivo `requirements.txt` com as versões das bibliotecas que estão instaladas no seu ambiente.
+   ```bash
+   deactivate
+   ```
 
 ---
 
 ### Resumo
 
-1. **Criar o ambiente virtual**: `python -m venv venv` (Windows) ou `python3 -m venv venv` (macOS/Linux).
+1. **Criar o ambiente virtual**:
+
+   * Windows: `python -m venv venv`
+   * macOS/Linux: `python3 -m venv venv`
+
 2. **Ativar o ambiente virtual**:
 
    * Windows: `.\venv\Scripts\activate`
    * macOS/Linux: `source venv/bin/activate`
+
 3. **Instalar as dependências**: `pip install -r requirements.txt`
-4. **Desativar o ambiente virtual**: `deactivate`
+
+4. **Acessar o diretório do projeto**:
+
+   ```bash
+   cd analise_proj
+   ```
+
+5. **Executar o Flask**:
+
+   ```bash
+   python app.py
+   ```
+
+6. **Acessar o servidor**: Abra o navegador e vá até `http://127.0.0.1:5000`.
+
+7. **Desativar o ambiente virtual**: `deactivate`
+
+
 
