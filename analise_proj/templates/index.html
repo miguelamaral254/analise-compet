@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Remuneração dos Docentes por Municípios</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .buttons-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #ddd;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .button.active {
+            background-color: #4CAF50;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .graph-section {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .graph-section img {
+            width: 80%;
+            max-width: 800px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .description {
+            font-style: italic;
+            margin-top: 10px;
+            color: #777;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Análise de Remuneração do Corpo Docente por município</h1>
+
+        <div class="buttons-container">
+            <button class="button active" onclick="showGraph('uf')">Remuneração Média por UF</button>
+            <button class="button" onclick="showGraph('num_docentes_uf')">Número de Docentes por UF</button>
+            <button class="button" onclick="showGraph('num_docentes_escolaridade')">Número de Docentes por Escolaridade</button>
+        </div>
+
+        <div id="uf" class="graph-section">
+            <h2>Gráfico de Remuneração Média por UF</h2>
+            <img src="{{ url_for('static', filename='images/remuneracao_por_uf.png') }}" alt="Gráfico de Remuneração Média por UF">
+            <p class="description">Descrição do gráfico: A análise realizada neste código tem como objetivo calcular a remuneração média dos docentes municipais por Unidade da Federação (UF). Essa análise visa entender como os docentes são remunerados nas diferentes regiões do Brasil, agrupando as informações por estados (UFs).</p>
+        </div>
+
+        <div id="num_docentes_uf" class="graph-section" style="display:none;">
+            <h2>Gráfico de Número de Docentes por UF</h2>
+            <img src="{{ url_for('static', filename='images/num_docentes_por_uf.png') }}" alt="Gráfico de Número de Docentes por UF">
+            <p class="description">Descrição do gráfico: Este gráfico exibe o total de docentes por Unidade da Federação, destacando a distribuição de profissionais de ensino em cada estado.</p>
+        </div>
+
+        <div id="num_docentes_escolaridade" class="graph-section" style="display:none;">
+            <h2>Gráfico de Número de Docentes por Escolaridade</h2>
+            <img src="{{ url_for('static', filename='images/num_docentes_por_escolaridade.png') }}" alt="Gráfico de Número de Docentes por Escolaridade">
+            <p class="description">Descrição do gráfico: O gráfico mostra a quantidade de docentes em cada nível de escolaridade, ajudando a entender a distribuição dos professores conforme a sua formação acadêmica.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Análise do Corpo Docente. Todos os direitos reservados.</p>
+        <p><a href="#">Voltar ao topo</a></p>
+    </footer>
+
+    <script>
+        function showGraph(graphId) {
+            const graphs = document.querySelectorAll('.graph-section');
+            graphs.forEach(graph => {
+                if (graph.id === graphId) {
+                    graph.style.display = 'block';
+                } else {
+                    graph.style.display = 'none';
+                }
+            });
+
+            const buttons = document.querySelectorAll('.button');
+            buttons.forEach(button => {
+                if (button.innerText.toLowerCase().includes(graphId.toLowerCase())) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        showGraph('uf');
+    </script>
+
+</body>
+</html>
